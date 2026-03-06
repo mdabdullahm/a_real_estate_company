@@ -66,7 +66,7 @@ const Testimonials = () => {
       <div className="absolute top-20 right-0 w-72 h-72 bg-blue-50 rounded-full blur-3xl opacity-60 -z-10"></div>
       <div className="absolute bottom-10 left-0 w-72 h-72 bg-purple-50 rounded-full blur-3xl opacity-60 -z-10"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
