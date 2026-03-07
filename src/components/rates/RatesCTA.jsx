@@ -6,7 +6,7 @@ import Link from "next/link";
 const RatesCTA = () => {
   return (
     <section className="py-15">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-full mx-auto px-4">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}

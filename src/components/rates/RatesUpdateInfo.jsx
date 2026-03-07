@@ -36,7 +36,7 @@ const infoCards = [
 const RatesUpdateInfo = () => {
   return (
     <section className="py-16 mx-4">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-full mx-auto">
         
         {/* Header Section */}
         <div className="flex flex-col md:flex-row items-center justify-between mb-12 gap-6">
