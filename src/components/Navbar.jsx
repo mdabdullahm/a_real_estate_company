@@ -20,7 +20,7 @@ const Navbar = () => {
   const inactiveClass = "text-gray-600 font-medium hover:text-blue-600 px-5 py-2 transition";
 
   return (
-    <nav className="bg-white border-b border-gray-100 sticky top-0 z-50">
+    <nav className="bg-white/50 backdrop-blur-xl border-b border-gray-100 sticky top-0 z-50">
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           
