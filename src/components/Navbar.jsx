@@ -2,10 +2,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion"; // এনিমেশনের জন্য ইমপোর্ট
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname(); // এটি চেক করবে ইউজার কোন পেজে আছে
+  const pathname = usePathname();
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -15,12 +16,11 @@ const Navbar = () => {
     { name: "Contact", href: "/contact" },
   ];
 
-  // কমন ডিজাইন ক্লাস
-  const activeClass = "bg-blue-600 text-white px-5 py-2 rounded-lg font-medium transition";
+  const activeClass = "bg-blue-600 text-white px-5 py-2 rounded-lg font-medium transition shadow-md";
   const inactiveClass = "text-gray-600 font-medium hover:text-blue-600 px-5 py-2 transition";
 
   return (
-    <nav className="bg-white/50 backdrop-blur-xl border-b border-gray-100 sticky top-0 z-50">
+    <nav className="bg-white/70 backdrop-blur-xl sticky top-0 z-50 relative">
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           
@@ -46,25 +46,20 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Login/Register Buttons (এখানেই ম্যাজিক) */}
+          {/* Login/Register Buttons */}
           <div className="hidden md:flex items-center space-x-2">
-            
-            {/* Login Button */}
             <Link 
               href="/login" 
               className={pathname === "/login" ? activeClass : inactiveClass}
             >
               Login
             </Link>
-
-            {/* Register Button */}
             <Link
               href="/register"
               className={pathname === "/register" ? activeClass : inactiveClass}
             >
               Register
             </Link>
-
           </div>
 
           {/* Mobile Menu Button */}
@@ -82,15 +77,30 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* --- এনিমেটেড ৪ রঙের বর্ডার (নিচে) --- */}
+      <div className="absolute bottom-0 left-0 w-full h-[2px] overflow-hidden">
+        <motion.div
+          initial={{ x: "-100%" }}
+          animate={{ x: "100%" }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="w-full h-full bg-gradient-to-r from-blue-500 via-cyan-400 via-indigo-500 to-purple-500"
+          style={{ width: "200%" }} // মসৃণ লুপের জন্য ডাবল উইডথ
+        />
+      </div>
+
       {/* Mobile Menu Items */}
       {isOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 p-4 space-y-4">
           {navLinks.map((link) => (
-            <Link key={link.name} href={link.href} className="block text-gray-600">
+            <Link key={link.name} href={link.href} className="block text-gray-600 font-medium">
               {link.name}
             </Link>
           ))}
-          <div className="flex flex-col space-y-2">
+          <div className="flex flex-col space-y-2 border-t pt-4">
             <Link href="/login" className={pathname === "/login" ? "bg-blue-600 text-white p-2 text-center rounded" : "text-center p-2 border"}>Login</Link>
             <Link href="/register" className={pathname === "/register" ? "bg-blue-600 text-white p-2 text-center rounded" : "text-center p-2 border"}>Register</Link>
           </div>
